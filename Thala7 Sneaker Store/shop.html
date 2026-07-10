@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thala Signature 07 - Thala Footwear</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .menus {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .menus ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .menus ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .menus ul li a:hover {
+      color: #e74c3c;
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: #333;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+
+    .icon-btn:hover {
+      background: #f5f5f5;
+      color: #e74c3c;
+    }
+
+    .cart-btn {
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #e74c3c;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: bold;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #eee;
+    }
+
+    .product-detail {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .product-images {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .main-image {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #1e2937;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .main-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .main-image:hover img {
+      transform: scale(1.03);
+    }
+
+    .thumbnails {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .thumbnail {
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: default;
+      border: 3px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .thumbnail.active {
+      border-color: #e74c3c;
+      box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.2);
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      background: #1e2937;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-name {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .rating {
+      color: #fbbf24;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .review-count {
+      color: #94a3b8;
+      font-size: 1rem;
+    }
+
+    .price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #e74c3c;
+      margin: 20px 0;
+    }
+
+    .product-desc {
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+
+    .specs {
+      margin-bottom: 30px;
+    }
+
+    .specs h4 {
+      margin-bottom: 12px;
+      color: #e2e8f0;
+    }
+
+    .specs ul {
+      list-style: none;
+    }
+
+    .specs li {
+      padding: 6px 0;
+      color: #94a3b8;
+    }
+
+    .purchase-section {
+      display: flex;
+      align-items: end;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .quantity {
+      flex: 1;
+    }
+
+    .quantity label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .quantity select {
+      width: 100%;
+      padding: 14px 16px;
+      background: #334155;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+    }
+
+    .add-to-cart-btn {
+      flex: 2;
+      padding: 16px 32px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .add-to-cart-btn:hover {
+      background: #c0392b;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 992px) {
+      .product-detail {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .thumbnails {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .product-info {
+        padding: 30px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="header">
+    <div class="navbar">
+      <div class="logo">
+        <img src="https://imgs.search.brave.com/4p2fRozYkA0vOqnhvKM2L1KUqFqfL39trIv7e-ZO0gg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dGV4dHN0dWRpby5j/b20vb3V0cHV0L3Nh/bXBsZS9ub3JtYWwv/MC82LzgvOC90aGFs/YS1sb2dvLTg2MC0y/ODg2MC5wbmc" alt="logo">
+      </div>
+
+      <div class="menus">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Brands</a></li>
+          <li><a href="#">More</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="nav-icons">
+          <button class="icon-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <a href="cart.html" class="icon-btn cart-btn" style="text-decoration: none;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count">3</span>
+          </a>
+          <button class="icon-btn profile-btn">
+            <img src="https://imgs.search.brave.com/3XPXZAARvj9HLVB_4rtjyNLqNLKUjYyOm7CjboPBWQ0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMjUv/ODY5LzU4My9zbWFs/bC9wcm9maWxlLWlt/YWdlLW9mLW1hbi1h/dmF0YXItZm9yLXNv/Y2lhbC1uZXR3b3Jr/cy13aXRoLWhhbGYt/Y2lyY2xlLWZhc2hp/b24tYnJpZ2h0LWls/bHVzdHJhdGlvbi1p/bi10cmVuZHktc3R5/bGUtdmVjdG9yLmpw/Zw" alt="Profile" class="profile-img">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Detail -->
+  <div class="product-detail">
+    <!-- Left: Images -->
+    <div class="product-images">
+      <div class="main-image">
+        <img src="https://abrosshoes.com/cdn/shop/files/Cliff_0008_000A7864.jpg?v=1756296498&width=600" alt="Thala Signature 07">
+      </div>
+
+      <div class="thumbnails">
+        <div class="thumbnail active">
+          <img src="https://abrosshoes.com/cdn/shop/files/Cliff_0009_000A6997.jpg?v=1756296498&width=600" alt="View 1">
+        </div>
+        <div class="thumbnail">
+          <img src="https://abrosshoes.com/cdn/shop/files/Cliff_0010_000A6989.jpg?v=1756296498&width=600" alt="View 2">
+        </div>
+        <div class="thumbnail">
+          <img src="https://abrosshoes.com/cdn/shop/files/Cliff_0014_000A6994.jpg?v=1756296499&width=600" alt="View 3">
+        </div>
+        <div class="thumbnail">
+          <img src="https://abrosshoes.com/cdn/shop/files/Cliff_0015_000A6995.jpg?v=1756296499&width=600" alt="View 4">
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Info -->
+    <div class="product-info">
+      <div class="rating">★★★★☆ <span class="review-count">(128 reviews)</span></div>
+      <h1 class="product-name">Thala Signature 07</h1>
+      <div class="price">₹4,999</div>
+
+      <p class="product-desc">
+        Signature edition inspired by the legend. Premium full-grain leather upper, supreme cushioning, and unmatched grip for the court and streets. Built for champions who demand excellence.
+      </p>
+
+      <div class="specs">
+        <h4>Key Features</h4>
+        <ul>
+          <li>• Premium Italian Leather</li>
+          <li>• Advanced Shock Absorption</li>
+          <li>• Anti-slip Rubber Outsole</li>
+          <li>• Breathable Mesh Lining</li>
+          <li>• Signature Thala Embossing</li>
+        </ul>
+      </div>
+
+      <div class="purchase-section">
+        <div class="quantity">
+          <label for="quantity">Quantity</label>
+          <select id="quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <a href="cart.html" class="add-to-cart-btn">
+          <i class="fas fa-cart-plus"></i> Buy Now!!!
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
