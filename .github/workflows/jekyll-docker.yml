@@ -26,7 +26,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'docs'        # Change only if your folder name is different
+          path: 'Thala7 Sneaker Store'        # Change only if your folder name is different
 
       - name: Deploy
         id: deployment
