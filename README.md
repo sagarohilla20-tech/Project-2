@@ -6,7 +6,7 @@ A clean, modern, static e-commerce website for **Thala Footwear** (Thala7), insp
 
 ## ✨ Features
 
-- **Fully Responsive Design** – Works great on mobile, tablet, and desktop
+- **Fully Responsive Design** – Works great on mobile, tablet, and desktop  
 - **Modern Dark Theme** with premium red accents (#e74c3c)
 - **Hero Section** with subtle background animations
 - **Product Detail Page** with image gallery (thumbnails + hover effects)
