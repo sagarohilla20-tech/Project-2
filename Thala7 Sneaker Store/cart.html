@@ -5,26 +5,139 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart - Thala Footwear</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color: #0f172a; color: white;">
+  
+  <style>
+    body {
+      margin:0; 
+      padding:0; 
+      font-family: Arial, sans-serif; 
+      background-color: #0f172a; 
+      color: white;
+    }
 
-  <div style="background-color: white; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); position: sticky; top: 0;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px;">
-      
+    .header {
+      background-color: white; 
+      padding: 15px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+      position: sticky; 
+      top: 0;
+    }
+
+    .nav-container {
+      max-width: 1200px; 
+      margin: 0 auto; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      list-style: none; 
+      display: flex; 
+      gap: 25px; 
+      padding: 0; 
+      margin: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none; 
+      color: #333; 
+      font-size: 18px;
+    }
+
+    .nav-icons {
+      display: flex; 
+      gap: 15px; 
+      align-items: center;
+    }
+
+    .cart-items {
+      flex: 2; 
+      background-color: #1e2937; 
+      padding: 25px; 
+      border-radius: 15px;
+    }
+
+    .order-summary {
+      flex: 1; 
+      background-color: #1e2937; 
+      padding: 25px; 
+      border-radius: 15px; 
+      min-width: 300px;
+    }
+
+    table {
+      width: 100%; 
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 15px;
+    }
+
+    .product-row td {
+      padding: 20px 15px;
+    }
+
+    .quantity-control {
+      display: flex; 
+      align-items: center; 
+      gap: 8px;
+    }
+
+    .qty-btn {
+      background: #334155; 
+      color: white; 
+      border: none; 
+      width: 30px; 
+      height: 30px; 
+      font-size: 18px; 
+      cursor: pointer;
+    }
+
+    .checkout-btn {
+      display: block; 
+      text-align: center; 
+      padding: 18px; 
+      background: #e74c3c; 
+      color: white; 
+      text-decoration: none; 
+      border-radius: 50px; 
+      font-size: 18px; 
+      font-weight: bold; 
+      margin: 25px 0;
+    }
+
+    a:hover {
+      color: #e74c3c;
+    }
+
+    @media (max-width: 900px) {
+      .cart-wrapper {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="nav-container">
       <div>
         <img src="https://imgs.search.brave.com/4p2fRozYkA0vOqnhvKM2L1KUqFqfL39trIv7e-ZO0gg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dGV4dHN0dWRpby5j/b20vb3V0cHV0L3Nh/bXBsZS9ub3JtYWwv/MC82LzgvOC90aGFs/YS1sb2dvLTg2MC0y/ODg2MC5wbmc" alt="logo" style="height: 50px;">
       </div>
 
       <div style="display: flex; gap: 30px; align-items: center;">
-        <ul style="list-style: none; display: flex; gap: 25px; padding: 0; margin: 0;">
-          <li><a href="index.html" style="text-decoration: none; color: #333; font-size: 18px;">Home</a></li>
-          <li><a href="#" style="text-decoration: none; color: #333; font-size: 18px;">About</a></li>
-          <li><a href="#" style="text-decoration: none; color: #333; font-size: 18px;">Brands</a></li>
-          <li><a href="#" style="text-decoration: none; color: #333; font-size: 18px;">More</a></li>
-          <li><a href="#" style="text-decoration: none; color: #333; font-size: 18px;">Contact</a></li>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Brands</a></li>
+          <li><a href="#">More</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
 
-        <div style="display: flex; gap: 15px; align-items: center;">
+        <div class="nav-icons">
           <button style="background: none; border: none; font-size: 24px; color: #333; cursor: pointer;">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
@@ -46,39 +159,39 @@
 
     <h1 style="text-align: center; color: #e74c3c; font-size: 40px; margin-bottom: 40px;">Shopping Cart</h1>
 
-    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+    <div class="cart-wrapper" style="display: flex; gap: 30px; flex-wrap: wrap;">
 
       <!-- Cart Items -->
-      <div style="flex: 2; background-color: #1e2937; padding: 25px; border-radius: 15px;">
-        <table style="width: 100%; border-collapse: collapse;">
+      <div class="cart-items">
+        <table>
           <thead>
             <tr style="border-bottom: 2px solid #334155;">
-              <th style="padding: 15px; text-align: left; color: #aaa; font-size: 14px;">Product</th>
-              <th style="padding: 15px; text-align: left; color: #aaa; font-size: 14px;">Price</th>
-              <th style="padding: 15px; text-align: left; color: #aaa; font-size: 14px;">Quantity</th>
-              <th style="padding: 15px; text-align: left; color: #aaa; font-size: 14px;">Total</th>
-              <th style="padding: 15px; width: 50px;"></th>
+              <th style="text-align: left; color: #aaa; font-size: 14px;">Product</th>
+              <th style="text-align: left; color: #aaa; font-size: 14px;">Price</th>
+              <th style="text-align: left; color: #aaa; font-size: 14px;">Quantity</th>
+              <th style="text-align: left; color: #aaa; font-size: 14px;">Total</th>
+              <th style="width: 50px;"></th>
             </tr>
           </thead>
           <tbody>
-            <tr style="border-bottom: 1px solid #334155;">
-              <td style="padding: 20px 15px; display: flex; align-items: center; gap: 15px;">
+            <tr class="product-row" style="border-bottom: 1px solid #334155;">
+              <td style="display: flex; align-items: center; gap: 15px;">
                 <img src="https://abrosshoes.com/cdn/shop/files/Cliff_0008_000A7864.jpg?v=1756296498&width=600" alt="Thala Signature" style="width: 90px; height: 90px; border-radius: 10px;">
                 <div>
                   <h4 style="margin: 0 0 5px 0; font-size: 18px;">Thala Signature 07</h4>
                   <p style="margin: 0; color: #94a3b8; font-size: 15px;">Size: 9 | Color: Black</p>
                 </div>
               </td>
-              <td style="padding: 20px 15px; font-weight: bold; color: #e74c3c; font-size: 18px;">₹4,999</td>
-              <td style="padding: 20px 15px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <button style="background: #334155; color: white; border: none; width: 30px; height: 30px; font-size: 18px; cursor: pointer;">−</button>
+              <td style="font-weight: bold; color: #e74c3c; font-size: 18px;">₹4,999</td>
+              <td>
+                <div class="quantity-control">
+                  <button class="qty-btn">−</button>
                   <span style="width: 30px; text-align: center; font-size: 18px;">1</span>
-                  <button style="background: #334155; color: white; border: none; width: 30px; height: 30px; font-size: 18px; cursor: pointer;">+</button>
+                  <button class="qty-btn">+</button>
                 </div>
               </td>
-              <td style="padding: 20px 15px; font-weight: bold; color: #e74c3c; font-size: 18px;">₹4,999</td>
-              <td style="padding: 20px 15px;">
+              <td style="font-weight: bold; color: #e74c3c; font-size: 18px;">₹4,999</td>
+              <td>
                 <button style="background: none; border: none; color: #e74c3c; font-size: 20px; cursor: pointer;">
                   <i class="fas fa-trash"></i>
                 </button>
@@ -89,7 +202,7 @@
       </div>
 
       <!-- Order Summary -->
-      <div style="flex: 1; background-color: #1e2937; padding: 25px; border-radius: 15px; min-width: 300px;">
+      <div class="order-summary">
         <h3 style="margin-bottom: 20px; font-size: 24px;">Order Summary</h3>
 
         <div style="display: flex; margin-bottom: 20px; gap: 10px;">
@@ -114,7 +227,7 @@
           <span>₹5,898</span>
         </div>
 
-        <a href="checkout.html" style="display: block; text-align: center; padding: 18px; background: #e74c3c; color: white; text-decoration: none; border-radius: 50px; font-size: 18px; font-weight: bold; margin: 25px 0;">
+        <a href="checkout.html" class="checkout-btn">
           <i class="fas fa-lock"></i> Proceed to Checkout
         </a>
 
@@ -137,34 +250,6 @@
     </div>
 
   </div>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    
-    table {
-      width: 100%;
-    }
-    
-    th, td {
-      padding: 15px;
-    }
-    
-    button {
-      cursor: pointer;
-    }
-    
-    a:hover {
-      color: #e74c3c;
-    }
-    
-    @media (max-width: 900px) {
-      .flex-container {
-        flex-direction: column;
-      }
-    }
-  </style>
 
 </body>
 </html>
