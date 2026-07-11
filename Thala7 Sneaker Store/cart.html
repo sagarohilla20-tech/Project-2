@@ -5,414 +5,166 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart - Thala Footwear</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-    }
-
-    .header {
-      background: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo img {
-      height: 50px;
-      width: auto;
-    }
-
-    .menus {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
-
-    .menus ul {
-      display: flex;
-      list-style: none;
-      gap: 30px;
-    }
-
-    .menus ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .menus ul li a:hover {
-      color: #e74c3c;
-    }
-
-    .nav-icons {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .icon-btn {
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      color: #333;
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 50%;
-      transition: all 0.3s;
-    }
-
-    .icon-btn:hover {
-      background: #f5f5f5;
-      color: #e74c3c;
-    }
-
-    .cart-btn {
-      position: relative;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      background: #e74c3c;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: bold;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .profile-img {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #eee;
-    }
-
-    /* Main Content */
-    .cart-container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .cart-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .cart-header h1 {
-      font-size: 3rem;
-      color: #e74c3c;
-      font-weight: 800;
-    }
-
-    .cart-content {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-    }
-
-    .cart-items {
-      background: #1e2937;
-      border-radius: 20px;
-      padding: 30px;
-    }
-
-    .cart-item {
-      display: flex;
-      gap: 20px;
-      padding: 20px 0;
-      border-bottom: 1px solid #334155;
-    }
-
-    .cart-item:last-child {
-      border-bottom: none;
-    }
-
-    .cart-item img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
-    .item-info h4 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-
-    .item-info p {
-      color: #94a3b8;
-      margin-bottom: 10px;
-    }
-
-    .item-price {
-      font-weight: 700;
-      color: #e74c3c;
-      font-size: 1.2rem;
-    }
-
-    .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .quantity-controls button {
-      background: #334155;
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      color: white;
-      cursor: default;
-    }
-
-    .order-summary {
-      background: #1e2937;
-      border-radius: 20px;
-      padding: 30px;
-      height: fit-content;
-      position: sticky;
-      top: 100px;
-    }
-
-    .order-summary h3 {
-      margin-bottom: 25px;
-      font-size: 1.6rem;
-      color: white;
-    }
-
-    .coupon {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 25px;
-    }
-
-    .coupon input {
-      flex: 1;
-      padding: 14px;
-      background: #334155;
-      border: none;
-      border-radius: 12px;
-      color: white;
-    }
-
-    .coupon button {
-      padding: 0 24px;
-      background: #e74c3c;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: default;
-    }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid #334155;
-    }
-
-    .summary-row:last-child {
-      border-bottom: none;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: white;
-    }
-
-    .total {
-      font-size: 1.5rem !important;
-      color: #e74c3c !important;
-      margin-top: 10px;
-    }
-
-    .checkout-btn {
-      width: 100%;
-      padding: 18px;
-      background: #e74c3c;
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.3rem;
-      font-weight: 700;
-      cursor: pointer;
-      margin: 30px 0 20px;
-      transition: all 0.3s;
-    }
-
-    .checkout-btn:hover {
-      background: #c0392b;
-      transform: translateY(-3px);
-    }
-
-    .payment-options {
-      text-align: center;
-    }
-
-    .payment-options p {
-      margin-bottom: 12px;
-      color: #94a3b8;
-    }
-
-    .razorpay-icons img {
-      height: 40px;
-      margin: 0 8px;
-    }
-
-    .continue-shopping {
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    .continue-shopping a {
-      color: #94a3b8;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-
-    .continue-shopping a:hover {
-      color: #e74c3c;
-    }
-
-    @media (max-width: 992px) {
-      .cart-content {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
-<body>
+<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color: #0f172a; color: white;">
 
-  <!-- Navbar -->
-  <div class="header">
-    <div class="navbar">
-      <div class="logo">
-        <img src="https://imgs.search.brave.com/4p2fRozYkA0vOqnhvKM2L1KUqFqfL39trIv7e-ZO0gg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dGV4dHN0dWRpby5j/b20vb3V0cHV0L3Nh/bXBsZS9ub3JtYWwv/MC82LzgvOC90aGFs/YS1sb2dvLTg2MC0y/ODg2MC5wbmc" alt="logo">
+  <div style="background-color: white; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); position: sticky; top: 0;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px;">
+      
+      <div>
+        <img src="https://imgs.search.brave.com/4p2fRozYkA0vOqnhvKM2L1KUqFqfL39trIv7e-ZO0gg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dGV4dHN0dWRpby5j/b20vb3V0cHV0L3Nh/bXBsZS9ub3JtYWwv/MC82LzgvOC90aGFs/YS1sb2dvLTg2MC0y/ODg2MC5wbmc" alt="logo" style="height: 50px;">
       </div>
 
-      <div class="menus">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Brands</a></li>
-          <li><a href="#">More</a></li>
-          <li><a href="#">Contact</a></li>
+      <div style="display: flex; gap: 30px; align-items: center;">
+        <ul style="list-style: none; display: flex; gap: 25px; padding: 0; margin: 0;">
+          <li><a href="index.html" style="text-decoration: none; color: #333; font-size: 18px;">Home</a></li>
+          <li><a href="#" style="text-decoration: none; color: #333; font-size: 18px;">About</a></li>
+          <li><a href="#" style="text-decoration: none; color: #333; font-size: 18px;">Brands</a></li>
+          <li><a href="#" style="text-decoration: none; color: #333; font-size: 18px;">More</a></li>
+          <li><a href="#" style="text-decoration: none; color: #333; font-size: 18px;">Contact</a></li>
         </ul>
 
-        <div class="nav-icons">
-          <button class="icon-btn">
+        <div style="display: flex; gap: 15px; align-items: center;">
+          <button style="background: none; border: none; font-size: 24px; color: #333; cursor: pointer;">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
-          <a href="cart.html" class="icon-btn cart-btn" style="text-decoration:none;">
+          
+          <a href="cart.html" style="text-decoration:none; position: relative; color: #333; font-size: 24px;">
             <i class="fa-solid fa-cart-shopping"></i>
-            <span class="cart-count">2</span>
+            <span style="position: absolute; top: -8px; right: -8px; background: red; color: white; font-size: 12px; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</span>
           </a>
-          <button class="icon-btn profile-btn">
-            <img src="https://imgs.search.brave.com/3XPXZAARvj9HLVB_4rtjyNLqNLKUjYyOm7CjboPBWQ0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMjUv/ODY5LzU4My9zbWFs/bC9wcm9maWxlLWlt/YWdlLW9mLW1hbi1h/dmF0YXItZm9yLXNv/Y2lhbC1uZXR3b3Jr/cy13aXRoLWhhbGYt/Y2lyY2xlLWZhc2hp/b24tYnJpZ2h0LWls/bHVzdHJhdGlvbi1p/bi10cmVuZHktc3R5/bGUtdmVjdG9yLmpw/Zw" alt="Profile" class="profile-img">
+          
+          <button style="background: none; border: none; cursor: pointer;">
+            <img src="https://imgs.search.brave.com/3XPXZAARvj9HLVB_4rtjyNLqNLKUjYyOm7CjboPBWQ0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMjUv/ODY5LzU4My9zbWFs/bC9wcm9maWxlLWlt/YWdlLW9mLW1hbi1h/dmF0YXItZm9yLXNv/Y2lhbC1uZXR3b3Jr/cy13aXRoLWhhbGYt/Y2lyY2xlLWZhc2hp/b24tYnJpZ2h0LWls/bHVzdHJhdGlvbi1p/bi10cmVuZHktc3R5/bGUtdmVjdG9yLmpw/Zw" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ddd;">
           </button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="cart-container">
-    <div class="cart-header">
-      <h1>Shopping Cart</h1>
-    </div>
+  <div style="max-width: 1100px; margin: 40px auto; padding: 0 20px;">
 
-    <div class="cart-content">
-      <div class="cart-items">
-        <div class="cart-item">
-          <img src="https://abrosshoes.com/cdn/shop/files/Cliff_0008_000A7864.jpg?v=1756296498&width=600" alt="Thala Signature">
-          <div class="item-info" style="flex: 1;">
-            <h4>Thala Signature 07</h4>
-            <p>Size: 9 | Color: Black</p>
-            <div class="quantity-controls">
-              <button>−</button>
-              <span>1</span>
-              <button>+</button>
-            </div>
-          </div>
-          <div>
-            <div class="item-price">₹4,999</div>
-            <button style="margin-top: 20px; background:none; border:none; color:#e74c3c; cursor:default;">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        </div>
+    <h1 style="text-align: center; color: #e74c3c; font-size: 40px; margin-bottom: 40px;">Shopping Cart</h1>
+
+    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+
+      <!-- Cart Items -->
+      <div style="flex: 2; background-color: #1e2937; padding: 25px; border-radius: 15px;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 2px solid #334155;">
+              <th style="padding: 15px; text-align: left; color: #aaa; font-size: 14px;">Product</th>
+              <th style="padding: 15px; text-align: left; color: #aaa; font-size: 14px;">Price</th>
+              <th style="padding: 15px; text-align: left; color: #aaa; font-size: 14px;">Quantity</th>
+              <th style="padding: 15px; text-align: left; color: #aaa; font-size: 14px;">Total</th>
+              <th style="padding: 15px; width: 50px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #334155;">
+              <td style="padding: 20px 15px; display: flex; align-items: center; gap: 15px;">
+                <img src="https://abrosshoes.com/cdn/shop/files/Cliff_0008_000A7864.jpg?v=1756296498&width=600" alt="Thala Signature" style="width: 90px; height: 90px; border-radius: 10px;">
+                <div>
+                  <h4 style="margin: 0 0 5px 0; font-size: 18px;">Thala Signature 07</h4>
+                  <p style="margin: 0; color: #94a3b8; font-size: 15px;">Size: 9 | Color: Black</p>
+                </div>
+              </td>
+              <td style="padding: 20px 15px; font-weight: bold; color: #e74c3c; font-size: 18px;">₹4,999</td>
+              <td style="padding: 20px 15px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <button style="background: #334155; color: white; border: none; width: 30px; height: 30px; font-size: 18px; cursor: pointer;">−</button>
+                  <span style="width: 30px; text-align: center; font-size: 18px;">1</span>
+                  <button style="background: #334155; color: white; border: none; width: 30px; height: 30px; font-size: 18px; cursor: pointer;">+</button>
+                </div>
+              </td>
+              <td style="padding: 20px 15px; font-weight: bold; color: #e74c3c; font-size: 18px;">₹4,999</td>
+              <td style="padding: 20px 15px;">
+                <button style="background: none; border: none; color: #e74c3c; font-size: 20px; cursor: pointer;">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="order-summary">
-        <h3>Order Summary</h3>
+      <!-- Order Summary -->
+      <div style="flex: 1; background-color: #1e2937; padding: 25px; border-radius: 15px; min-width: 300px;">
+        <h3 style="margin-bottom: 20px; font-size: 24px;">Order Summary</h3>
 
-        <div class="coupon">
-          <input type="text" placeholder="Enter coupon code">
-          <button>Apply</button>
+        <div style="display: flex; margin-bottom: 20px; gap: 10px;">
+          <input type="text" placeholder="Enter coupon code" style="flex: 1; padding: 12px; background: #334155; border: none; border-radius: 8px; color: white;">
+          <button style="padding: 0 25px; background: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer;">Apply</button>
         </div>
 
-        <div class="summary-row">
+        <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #334155;">
           <span>Subtotal</span>
           <span>₹4,999</span>
         </div>
-        <div class="summary-row">
+        <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #334155;">
           <span>Shipping</span>
-          <span style="color:#4ade80;">FREE</span>
+          <span style="color: #4ade80;">FREE</span>
         </div>
-        <div class="summary-row">
+        <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #334155;">
           <span>Taxes (18% GST)</span>
           <span>₹899</span>
         </div>
-        <div class="summary-row total">
+        <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 22px; font-weight: bold; color: #e74c3c;">
           <span>Total</span>
-          <span>₹5,398</span>
+          <span>₹5,898</span>
         </div>
 
-        <a href="checkout.html" class="checkout-btn" style="text-decoration: none; display: inline-block; text-align: center;">
+        <a href="checkout.html" style="display: block; text-align: center; padding: 18px; background: #e74c3c; color: white; text-decoration: none; border-radius: 50px; font-size: 18px; font-weight: bold; margin: 25px 0;">
           <i class="fas fa-lock"></i> Proceed to Checkout
         </a>
 
-        <div class="payment-options">
-          <p>Secured Payment via</p>
-          <div class="razorpay-icons">
-            <img src="https://razorpay.com/assets/razorpay-logo.svg" alt="Razorpay">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" style="height:35px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" style="height:35px;">
+        <div style="text-align: center; margin-top: 15px;">
+          <p style="color: #94a3b8; margin-bottom: 10px;">Secured Payment via</p>
+          <div style="display: flex; justify-content: center; gap: 15px;">
+            <img src="https://razorpay.com/assets/razorpay-logo.svg" alt="Razorpay" style="height: 35px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" style="height: 35px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" style="height: 35px;">
           </div>
         </div>
       </div>
+
     </div>
 
-    <div class="continue-shopping">
-      <a href="shop.html"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+    <div style="text-align: center; margin-top: 50px;">
+      <a href="shop.html" style="color: #94a3b8; text-decoration: none; font-size: 18px;">
+        ← Continue Shopping
+      </a>
     </div>
+
   </div>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    table {
+      width: 100%;
+    }
+    
+    th, td {
+      padding: 15px;
+    }
+    
+    button {
+      cursor: pointer;
+    }
+    
+    a:hover {
+      color: #e74c3c;
+    }
+    
+    @media (max-width: 900px) {
+      .flex-container {
+        flex-direction: column;
+      }
+    }
+  </style>
 
 </body>
 </html>

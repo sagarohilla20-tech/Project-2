@@ -5,241 +5,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout - Thala Footwear</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-    }
-
-    .header {
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo img { height: 50px; }
-
-    .checkout-container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-    }
-
-    .checkout-left {
-      background: #1e2937;
-      border-radius: 20px;
-      padding: 40px;
-    }
-
-    .checkout-right {
-      background: #1e2937;
-      border-radius: 20px;
-      padding: 40px;
-      height: fit-content;
-      position: sticky;
-      top: 100px;
-    }
-
-    h1, h2, h3 {
-      color: white;
-      margin-bottom: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 14px;
-      background: #334155;
-      border: none;
-      border-radius: 12px;
-      color: white;
-      font-size: 1rem;
-    }
-
-    .payment-options {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 25px 0;
-    }
-
-    .payment-method {
-      padding: 15px;
-      background: #334155;
-      border-radius: 12px;
-      cursor: default;
-      transition: all 0.3s;
-    }
-
-    .payment-method.active {
-      border: 2px solid #e74c3c;
-      background: #3b4a63;
-    }
-
-    .card-form {
-      display: block;
-      margin-top: 20px;
-      padding: 20px;
-      background: #253549;
-      border-radius: 12px;
-    }
-
-    .order-summary {
-      line-height: 2;
-    }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-    }
-
-    .grand-total {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #e74c3c;
-      border-top: 2px solid #334155;
-      padding-top: 15px;
-      margin-top: 15px;
-    }
-
-    .pay-btn {
-      width: 100%;
-      padding: 18px;
-      background: #e74c3c;
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.3rem;
-      font-weight: 700;
-      cursor: default;
-      margin-top: 30px;
-      transition: all 0.3s;
-    }
-
-    .pay-btn:hover {
-      background: #c0392b;
-      transform: translateY(-3px);
-    }
-
-    @media (max-width: 992px) {
-      .checkout-container {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
-<body>
+<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color: #0f172a; color: white;">
 
-  <!-- Navbar -->
-  <div class="header">
-    <div class="navbar">
-      <div class="logo">
-        <img src="https://imgs.search.brave.com/4p2fRozYkA0vOqnhvKM2L1KUqFqfL39trIv7e-ZO0gg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dGV4dHN0dWRpby5j/b20vb3V0cHV0L3Nh/bXBsZS9ub3JtYWwv/MC82LzgvOC90aGFs/YS1sb2dvLTg2MC0y/ODg2MC5wbmc" alt="logo">
+  <div style="background-color: white; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); position: sticky; top: 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between;">
+      <div>
+        <img src="https://imgs.search.brave.com/4p2fRozYkA0vOqnhvKM2L1KUqFqfL39trIv7e-ZO0gg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dGV4dHN0dWRpby5j/b20vb3V0cHV0L3Nh/bXBsZS9ub3JtYWwv/MC82LzgvOC90aGFs/YS1sb2dvLTg2MC0y/ODg2MC5wbmc" alt="logo" style="height: 50px;">
       </div>
     </div>
   </div>
 
-  <div class="checkout-container">
-    <div class="checkout-left">
-      <h1>Checkout</h1>
+  <div style="max-width: 1100px; margin: 40px auto; padding: 0 20px;">
 
-      <h3>Contact Information</h3>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" placeholder="your@email.com" required>
-      </div>
+    <h1 style="text-align: center; color: #e74c3c; font-size: 38px; margin-bottom: 40px;">Checkout</h1>
 
-      <h3>Payment Method</h3>
-      <div class="payment-options">
-        <div class="payment-method active">
-          <i class="fas fa-credit-card"></i> Credit / Debit Card
-        </div>
-        <div class="payment-method">
-          <i class="fas fa-mobile-alt"></i> UPI / Wallet
-        </div>
-        <div class="payment-method">
-          <i class="fas fa-bank"></i> Net Banking
-        </div>
-      </div>
+    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
 
-      <div class="card-form">
-        <div class="form-group">
-          <label>Card Number</label>
-          <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+      <!-- Left Side - Form -->
+      <div style="flex: 2; background-color: #1e2937; padding: 30px; border-radius: 15px;">
+
+        <h2 style="margin-bottom: 25px; color: white;">Contact Information</h2>
+        
+        <div style="margin-bottom: 25px;">
+          <label style="display: block; margin-bottom: 8px; font-weight: bold;">Email Address</label>
+          <input type="email" placeholder="your@email.com" style="width: 100%; padding: 14px; background: #334155; border: none; border-radius: 10px; color: white; font-size: 16px;">
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-          <div class="form-group">
-            <label>Expiry Date</label>
-            <input type="text" placeholder="MM/YY">
+
+        <h2 style="margin-bottom: 20px; color: white;">Payment Method</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px;">
+          <div style="padding: 15px; background: #334155; border-radius: 10px; border: 2px solid #e74c3c;">
+            <i class="fas fa-credit-card"></i> Credit / Debit Card
           </div>
-          <div class="form-group">
-            <label>CVV</label>
-            <input type="text" placeholder="123" maxlength="4">
+          <div style="padding: 15px; background: #334155; border-radius: 10px;">
+            <i class="fas fa-mobile-alt"></i> UPI / Wallet
+          </div>
+          <div style="padding: 15px; background: #334155; border-radius: 10px;">
+            <i class="fas fa-bank"></i> Net Banking
           </div>
         </div>
-        <div class="form-group">
-          <label>Cardholder Name</label>
-          <input type="text" placeholder="John Doe">
-        </div>
-      </div>
-    </div>
 
-    <div class="checkout-right">
-      <h2>Order Summary</h2>
-      <div class="order-summary">
-        <div class="summary-row">
-          <span>Thala Signature 07 (x1)</span>
-          <span>₹4,999</span>
+        <!-- Card Details -->
+        <div style="background: #253549; padding: 20px; border-radius: 12px;">
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px;">Card Number</label>
+            <input type="text" placeholder="1234 5678 9012 3456" style="width: 100%; padding: 14px; background: #334155; border: none; border-radius: 10px; color: white;">
+          </div>
+          
+          <div style="display: flex; gap: 15px;">
+            <div style="flex: 1;">
+              <label style="display: block; margin-bottom: 8px;">Expiry Date</label>
+              <input type="text" placeholder="MM/YY" style="width: 100%; padding: 14px; background: #334155; border: none; border-radius: 10px; color: white;">
+            </div>
+            <div style="flex: 1;">
+              <label style="display: block; margin-bottom: 8px;">CVV</label>
+              <input type="text" placeholder="123" style="width: 100%; padding: 14px; background: #334155; border: none; border-radius: 10px; color: white;">
+            </div>
+          </div>
+          
+          <div style="margin-top: 20px;">
+            <label style="display: block; margin-bottom: 8px;">Cardholder Name</label>
+            <input type="text" placeholder="John Doe" style="width: 100%; padding: 14px; background: #334155; border: none; border-radius: 10px; color: white;">
+          </div>
         </div>
-        <div class="summary-row">
-          <span>Shipping</span>
-          <span style="color:#4ade80;">FREE</span>
+
+      </div>
+
+      <!-- Right Side - Order Summary -->
+      <div style="flex: 1; background-color: #1e2937; padding: 30px; border-radius: 15px; min-width: 300px;">
+
+        <h2 style="margin-bottom: 20px;">Order Summary</h2>
+        
+        <div style="line-height: 2.2;">
+          <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+            <span>Thala Signature 07 (x1)</span>
+            <span>₹4,999</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+            <span>Shipping</span>
+            <span style="color:#4ade80;">FREE</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+            <span>GST (18%)</span>
+            <span>₹899</span>
+          </div>
         </div>
-        <div class="summary-row">
-          <span>GST (18%)</span>
-          <span>₹899</span>
-        </div>
-        <div class="summary-row grand-total">
+
+        <div style="border-top: 2px solid #334155; margin: 20px 0; padding-top: 15px; font-size: 22px; font-weight: bold; color: #e74c3c; display: flex; justify-content: space-between;">
           <span>Total</span>
           <span>₹5,898</span>
         </div>
+
+        <button style="width: 100%; padding: 18px; background: #e74c3c; color: white; border: none; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px;">
+          <i class="fas fa-lock"></i> Pay ₹5,898
+        </button>
+
+        <p style="text-align: center; margin-top: 15px; color: #94a3b8; font-size: 14px;">
+          Secured by Razorpay
+        </p>
+
       </div>
 
-      <button class="pay-btn">
-        <i class="fas fa-lock"></i> Pay ₹5,898
-      </button>
-
-      <p style="text-align:center; margin-top:15px; color:#94a3b8; font-size:0.9rem;">
-        Secured by Razorpay
-      </p>
     </div>
+
   </div>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    input, button {
+      font-size: 16px;
+    }
+    
+    label {
+      font-weight: bold;
+    }
+    
+    h1, h2 {
+      color: white;
+    }
+    
+    @media (max-width: 900px) {
+      div[style*="flex"] {
+        flex-direction: column !important;
+      }
+    }
+  </style>
 
 </body>
 </html>
